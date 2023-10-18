@@ -26,6 +26,15 @@ describe("PasswordStore Audit", function(){
     it("Check if password is correct", async()=>{
         console.log(await passwordStore.getPassword());
         console.log("");
+    });
+
+
+
+
+    //Everyone can change the password of this contract
+
+    it("Everyone can change the password", async()=>{
+       await passwordStore.connect(hacker).setPassword("ChangedFromHacker");
     })
 
 
