@@ -57,7 +57,7 @@ describe("PasswordStore Audit", function(){
         console.log("");
 
 
-        //Result of for statement:
+        //Result of for loop:
         //Slot 0 : 0x000000000000000000000000f39fd6e51aad88f6f4ce6ab8827279cfffb92266
         //Slot 1 : 0x556e6465724f7665720000000000000000000000000000000000000000000012
         //Slot 2 : 0x0000000000000000000000000000000000000000000000000000000000000000
