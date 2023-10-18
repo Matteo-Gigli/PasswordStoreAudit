@@ -30,7 +30,7 @@ describe("PasswordStore Audit", function(){
 
 
 
-
+    // --------- ERROR -----------
     //Everyone can change the password of this contract
 
     it("Everyone can change the password", async()=>{
@@ -40,6 +40,8 @@ describe("PasswordStore Audit", function(){
 
 
 
+
+    // --------- ERROR -----------
     //Hacker can retreive password using only the contract address
 
     it("Hacker Will have access to the password", async()=>{
