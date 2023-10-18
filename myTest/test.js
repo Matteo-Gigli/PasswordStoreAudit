@@ -88,6 +88,6 @@ describe("PasswordStore Audit", function(){
     //Everyone can change the password of this contract
 
     it("Everyone can change the password", async()=>{
-       await passwordStore.connect(account1).setPassword("ChangedFromHacker");
+       await passwordStore.connect(account1).setPassword("Changed From Account1");
     })
 })
