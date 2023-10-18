@@ -4,13 +4,13 @@ const{expectRevert} = require("@openzeppelin/test-helpers");
 
 describe("PasswordStore Audit", function(){
 
-    let owner, hacker;
+    let owner, hacker, account1;
     let PasswordStore, passwordStore;
 
 
     before(async()=>{
 
-        [owner, hacker] = await ethers.getSigners();
+        [owner, hacker, account1] = await ethers.getSigners();
 
         //Owner deploy contract PasswordStore
         PasswordStore = await ethers.getContractFactory("PasswordStore");
@@ -31,20 +31,9 @@ describe("PasswordStore Audit", function(){
 
 
     // --------- ERROR -----------
-    //Everyone can change the password of this contract
-
-    it("Everyone can change the password", async()=>{
-       await passwordStore.connect(hacker).setPassword("ChangedFromHacker");
-    })
-
-
-
-
-
-    // --------- ERROR -----------
     //Hacker can retreive password using only the contract address
 
-    it("Hacker Will have access to the password", async()=>{
+    it("Hacker have access to the password", async()=>{
 
         // Even if a variable is setted on private, we can see it from the storage and retreive it.
         let slot = 0;
@@ -90,4 +79,15 @@ describe("PasswordStore Audit", function(){
         //Slot 1 : 0x556e6465724f7665720000000000000000000000000000000000000000000012
         //To get exact result we need to cut last 2 values from the slot (12)
     });
+
+
+
+
+
+    // --------- ERROR -----------
+    //Everyone can change the password of this contract
+
+    it("Everyone can change the password", async()=>{
+       await passwordStore.connect(account1).setPassword("ChangedFromHacker");
+    })
 })
